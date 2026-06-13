@@ -1,0 +1,273 @@
+.bid-panel {
+  background: rgba(18, 18, 26, 0.9);
+  border: 1px solid rgba(212, 168, 83, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(12px);
+}
+
+.bid-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.bid-panel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #f0f0f5;
+  margin: 0;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.connected {
+  color: #2ecc71;
+  background: rgba(46, 204, 113, 0.1);
+}
+
+.disconnected {
+  color: #e67e22;
+  background: rgba(230, 126, 34, 0.1);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.connected .status-dot {
+  background: #2ecc71;
+  animation: pulse 1.5s ease infinite;
+}
+
+.disconnected .status-dot {
+  background: #e67e22;
+}
+
+.bid-current {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px;
+  background: rgba(212, 168, 83, 0.06);
+  border: 1px solid rgba(212, 168, 83, 0.12);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.bid-current-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bid-current-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f0c775;
+  line-height: 1;
+}
+
+.bid-count {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 4px;
+}
+
+.bid-input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.bid-input-group:focus-within {
+  border-color: rgba(212, 168, 83, 0.5);
+}
+
+.bid-currency {
+  padding: 0 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #d4a853;
+  font-size: 1.1rem;
+}
+
+.bid-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f0f0f5;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 14px 14px 14px 0;
+}
+
+.bid-input::placeholder {
+  color: #555;
+  font-weight: 400;
+}
+
+.bid-input::-webkit-outer-spin-button,
+.bid-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quick-bids {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.quick-bid-btn {
+  flex: 1;
+  padding: 8px;
+  background: rgba(212, 168, 83, 0.08);
+  border: 1px solid rgba(212, 168, 83, 0.2);
+  border-radius: 8px;
+  color: #d4a853;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-bid-btn:hover {
+  background: rgba(212, 168, 83, 0.15);
+  border-color: rgba(212, 168, 83, 0.4);
+}
+
+.bid-error {
+  color: #e74c3c;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.bid-submit {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  background: linear-gradient(135deg, #d4a853, #f0c775);
+  border: none;
+  border-radius: 10px;
+  color: #0a0a0f;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bid-submit:hover:not(:disabled) {
+  box-shadow: 0 6px 25px rgba(212, 168, 83, 0.4);
+  transform: translateY(-2px);
+}
+
+.bid-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.bid-disabled-msg {
+  padding: 18px;
+  text-align: center;
+  color: #888;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.bid-history {
+  margin-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 18px;
+}
+
+.bid-history-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #a0a0b0;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bid-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bid-history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  animation: bidSlideIn 0.3s ease-out;
+}
+
+.bid-history-user {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: #c0c0d0;
+  font-weight: 500;
+}
+
+.bid-history-amount {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #f0c775;
+}
+
+.bid-history-time {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+@keyframes bidSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}

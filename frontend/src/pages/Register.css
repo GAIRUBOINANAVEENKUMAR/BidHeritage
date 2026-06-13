@@ -1,0 +1,356 @@
+/* ===== Register Page - BidHeritage ===== */
+
+.register-page {
+  min-height: 100vh;
+  background: #0a0a0f;
+  font-family: 'Inter', sans-serif;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.register-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 20%, rgba(212, 168, 83, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 70% 80%, rgba(140, 90, 200, 0.04) 0%, transparent 50%);
+}
+
+/* ---------- Card ---------- */
+.register-card {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  padding: 3rem;
+  border-radius: 24px;
+  background: rgba(18, 18, 26, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 1;
+  animation: regCardEnter 0.7s ease-out;
+}
+
+@keyframes regCardEnter {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.register-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 168, 83, 0.4),
+    rgba(212, 168, 83, 0.08),
+    rgba(140, 90, 200, 0.15),
+    rgba(212, 168, 83, 0.3)
+  );
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderGlow 5s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- Header ---------- */
+.register-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.register-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  background: linear-gradient(135deg, #f0c775, #d4a853);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.4rem;
+}
+
+.register-header p {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.95rem;
+}
+
+/* ---------- Section Titles ---------- */
+.form-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: #d4a853;
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(212, 168, 83, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-section-title:first-of-type {
+  margin-top: 0;
+}
+
+/* ---------- Form Grid ---------- */
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-row.single {
+  grid-template-columns: 1fr;
+}
+
+.reg-form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.reg-form-group label {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.3px;
+}
+
+.reg-form-group label .required {
+  color: #d4a853;
+  margin-left: 2px;
+}
+
+.reg-form-group input,
+.reg-form-group select,
+.reg-form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #e8e8e8;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.reg-form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.reg-form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4a853' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.reg-form-group select option {
+  background: #1a1a2e;
+  color: #e8e8e8;
+}
+
+.reg-form-group input:focus,
+.reg-form-group select:focus,
+.reg-form-group textarea:focus {
+  border-color: rgba(212, 168, 83, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 16px rgba(212, 168, 83, 0.08);
+}
+
+/* Validation error */
+.reg-form-group.has-error input,
+.reg-form-group.has-error select,
+.reg-form-group.has-error textarea {
+  border-color: rgba(220, 50, 50, 0.6);
+}
+
+.field-error {
+  font-size: 0.75rem;
+  color: #ff6b6b;
+  margin-top: 0.3rem;
+}
+
+/* ---------- Photo Upload ---------- */
+.photo-upload-area {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  border: 2px dashed rgba(212, 168, 83, 0.2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.photo-upload-area:hover {
+  border-color: rgba(212, 168, 83, 0.4);
+  background: rgba(212, 168, 83, 0.03);
+}
+
+.photo-upload-area input[type="file"] {
+  display: none;
+}
+
+.photo-preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(212, 168, 83, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 168, 83, 0.05);
+  flex-shrink: 0;
+}
+
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-preview-placeholder {
+  color: #d4a853;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-upload-text h4 {
+  color: #d4a853;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.photo-upload-text p {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+}
+
+/* ---------- API / General Error ---------- */
+.register-error {
+  background: rgba(220, 50, 50, 0.1);
+  border: 1px solid rgba(220, 50, 50, 0.3);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  color: #ff6b6b;
+  font-size: 0.88rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  animation: errorShake 0.4s ease;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* ---------- Submit Button ---------- */
+.register-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d4a853, #f0c775);
+  color: #0a0a0f;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.register-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.register-btn:hover::before {
+  left: 100%;
+}
+
+.register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 168, 83, 0.4);
+}
+
+.register-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- Footer ---------- */
+.register-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+}
+
+.register-footer a {
+  color: #d4a853;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.register-footer a:hover {
+  color: #f0c775;
+  text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .register-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-upload-area {
+    flex-direction: column;
+    text-align: center;
+  }
+}

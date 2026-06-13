@@ -1,0 +1,206 @@
+/* ═══════════════════════════════════════════════
+   Dashboard.css — BidHeritage Premium
+   ═══════════════════════════════════════════════ */
+
+.dashboard-page {
+  min-height: 100vh;
+  background: #0a0a0f;
+  padding: 2rem 4%;
+  font-family: 'Inter', sans-serif;
+  color: #e0e0e0;
+  animation: dashFadeIn .6s ease;
+}
+@keyframes dashFadeIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── header ── */
+.dash-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem;
+}
+.dash-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; color: #fff; margin-bottom: .3rem;
+}
+.dash-title span {
+  background: linear-gradient(135deg, #d4a853, #f0c775);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.dash-subtitle { color: #888; font-size: .92rem; }
+
+.dash-header-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
+.dash-quick-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .65rem 1.2rem;
+  background: rgba(212,168,83,.08);
+  border: 1px solid rgba(212,168,83,.2);
+  border-radius: 10px;
+  color: #d4a853; text-decoration: none;
+  font-size: .85rem; font-weight: 600;
+  transition: all .3s;
+}
+.dash-quick-btn:hover {
+  background: rgba(212,168,83,.18);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(212,168,83,.15);
+}
+
+/* ── stats grid ── */
+.dash-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.dash-stat-card {
+  position: relative;
+  background: rgba(18,18,26,.7);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+  overflow: hidden;
+  transition: all .3s;
+}
+.dash-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px rgba(0,0,0,.3);
+}
+.dash-stat-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+.dash-stat-value {
+  display: block;
+  font-size: 1.6rem; font-weight: 800; color: #fff;
+}
+.dash-stat-label {
+  display: block;
+  font-size: .78rem; color: #888;
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.dash-stat-glow {
+  position: absolute; top: -30px; right: -30px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  opacity: .06; filter: blur(20px);
+}
+
+/* ── bids section ── */
+.dash-bids-section {
+  background: rgba(18,18,26,.4);
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 18px;
+  padding: 2rem;
+}
+.dash-section-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1.5rem;
+}
+.dash-section-header h2 {
+  font-family: 'Playfair Display', serif;
+  color: #d4a853; font-size: 1.4rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.dash-see-all {
+  color: #d4a853; text-decoration: none;
+  display: flex; align-items: center; gap: .3rem;
+  font-size: .85rem; transition: color .3s;
+}
+.dash-see-all:hover { color: #f0c775; }
+
+/* ── bid cards grid ── */
+.dash-bids-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.2rem;
+}
+.dash-bid-card {
+  display: flex; gap: 1rem;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all .3s;
+}
+.dash-bid-card:hover {
+  border-color: rgba(212,168,83,.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+}
+.dash-bid-img-wrap {
+  width: 80px; height: 80px;
+  border-radius: 10px; overflow: hidden;
+  flex-shrink: 0;
+}
+.dash-bid-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.dash-bid-info { flex: 1; display: flex; flex-direction: column; gap: .4rem; }
+.dash-bid-info h4 {
+  font-size: .95rem; color: #fff;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.dash-bid-details { display: flex; gap: 1.2rem; }
+.dash-bid-detail { }
+.dash-bid-label { display: block; font-size: .68rem; color: #888; text-transform: uppercase; }
+.dash-bid-value { font-weight: 700; color: #d4a853; font-size: .9rem; }
+.dash-bid-highest { color: #f0c775; }
+.dash-bid-status {
+  font-size: .75rem; font-weight: 700;
+  width: fit-content; padding: .2rem .7rem;
+  border-radius: 6px;
+}
+.dash-bid-status.winning { background: rgba(46,204,113,.12); color: #2ecc71; }
+.dash-bid-status.outbid { background: rgba(231,76,60,.12); color: #e74c3c; }
+
+/* ── empty ── */
+.dash-empty {
+  text-align: center; padding: 3rem 1rem; color: #666;
+}
+.dash-empty svg { color: #333; margin-bottom: 1rem; }
+.dash-empty h3 { color: #aaa; margin-bottom: .4rem; }
+.dash-cta-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  margin-top: 1rem;
+  padding: .7rem 1.6rem;
+  background: linear-gradient(135deg, #d4a853, #b8893a);
+  color: #0a0a0f; font-weight: 700;
+  border-radius: 10px; text-decoration: none;
+  transition: all .3s;
+}
+.dash-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,168,83,.3); }
+
+/* ── loading ── */
+.dash-loading {
+  min-height: 80vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; color: #888;
+}
+.dash-spinner {
+  width: 44px; height: 44px;
+  border: 3px solid rgba(212,168,83,.15);
+  border-top-color: #d4a853;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  margin-bottom: 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── responsive ── */
+@media (max-width: 1024px) {
+  .dash-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .dash-header { flex-direction: column; }
+  .dash-stats-grid { grid-template-columns: 1fr 1fr; }
+  .dash-bids-grid { grid-template-columns: 1fr; }
+  .dash-title { font-size: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .dash-stats-grid { grid-template-columns: 1fr; }
+  .dashboard-page { padding: 1rem 3%; }
+}

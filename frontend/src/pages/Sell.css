@@ -1,0 +1,351 @@
+/* ===== Sell / List Item Page - BidHeritage ===== */
+
+.sell-page {
+  min-height: 100vh;
+  background: #0a0a0f;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sell-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 70% 20%, rgba(212, 168, 83, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 30% 80%, rgba(140, 90, 200, 0.04) 0%, transparent 50%);
+}
+
+/* ---------- Card ---------- */
+.sell-card {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  padding: 3rem;
+  border-radius: 24px;
+  background: rgba(18, 18, 26, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 1;
+  animation: sellCardEnter 0.7s ease-out;
+}
+
+@keyframes sellCardEnter {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.sell-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 168, 83, 0.4),
+    rgba(212, 168, 83, 0.08),
+    rgba(140, 90, 200, 0.15),
+    rgba(212, 168, 83, 0.3)
+  );
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderGlow 5s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- Header ---------- */
+.sell-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.sell-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  background: linear-gradient(135deg, #f0c775, #d4a853);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.4rem;
+}
+
+.sell-header p {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.95rem;
+}
+
+/* ---------- Form ---------- */
+.sell-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.sell-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.sell-form-group label {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.3px;
+}
+
+.sell-form-group label .required {
+  color: #d4a853;
+  margin-left: 2px;
+}
+
+.sell-form-group input,
+.sell-form-group select,
+.sell-form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #e8e8e8;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.sell-form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.sell-form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4a853' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.sell-form-group select option {
+  background: #1a1a2e;
+  color: #e8e8e8;
+}
+
+.sell-form-group input:focus,
+.sell-form-group select:focus,
+.sell-form-group textarea:focus {
+  border-color: rgba(212, 168, 83, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 16px rgba(212, 168, 83, 0.08);
+}
+
+.sell-form-group.has-error input,
+.sell-form-group.has-error select,
+.sell-form-group.has-error textarea {
+  border-color: rgba(220, 50, 50, 0.6);
+}
+
+.sell-field-error {
+  font-size: 0.75rem;
+  color: #ff6b6b;
+  margin-top: 0.3rem;
+}
+
+.sell-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* ---------- Drag & Drop Upload ---------- */
+.sell-upload-area {
+  border: 2px dashed rgba(212, 168, 83, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+  position: relative;
+}
+
+.sell-upload-area:hover,
+.sell-upload-area.drag-over {
+  border-color: rgba(212, 168, 83, 0.5);
+  background: rgba(212, 168, 83, 0.04);
+}
+
+.sell-upload-area input[type="file"] {
+  display: none;
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  color: rgba(212, 168, 83, 0.4);
+  margin-bottom: 0.75rem;
+}
+
+.sell-upload-area h4 {
+  color: #d4a853;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.sell-upload-area p {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.82rem;
+}
+
+.upload-preview {
+  margin-top: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.upload-preview img {
+  max-width: 200px;
+  max-height: 150px;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 168, 83, 0.3);
+  object-fit: cover;
+}
+
+.remove-preview {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(220, 50, 50, 0.8);
+  border: none;
+  color: #fff;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.remove-preview:hover {
+  background: rgba(220, 50, 50, 1);
+}
+
+/* ---------- Submit ---------- */
+.sell-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d4a853, #f0c775);
+  color: #0a0a0f;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.sell-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.sell-btn:hover::before {
+  left: 100%;
+}
+
+.sell-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 168, 83, 0.4);
+}
+
+.sell-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- API Error ---------- */
+.sell-error {
+  background: rgba(220, 50, 50, 0.1);
+  border: 1px solid rgba(220, 50, 50, 0.3);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  color: #ff6b6b;
+  font-size: 0.88rem;
+  text-align: center;
+  animation: errorShake 0.4s ease;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* ---------- Success Toast ---------- */
+.sell-toast {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 14px;
+  background: rgba(18, 18, 26, 0.95);
+  border: 1px solid rgba(212, 168, 83, 0.4);
+  backdrop-filter: blur(20px);
+  color: #f0c775;
+  font-weight: 600;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  animation: toastIn 0.4s ease-out;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.sell-toast .toast-icon {
+  font-size: 1.3rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .sell-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .sell-form-row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,85 @@
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+  padding: 8px 10px;
+  background: rgba(212, 168, 83, 0.08);
+  border: 1px solid rgba(212, 168, 83, 0.15);
+  border-radius: 10px;
+}
+
+.countdown-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f0c775;
+  line-height: 1;
+}
+
+.countdown-seconds {
+  animation: countTick 1s ease infinite;
+}
+
+.countdown-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.countdown-sep {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #d4a853;
+  opacity: 0.5;
+}
+
+.countdown-urgent .countdown-unit {
+  border-color: rgba(231, 76, 60, 0.3);
+  background: rgba(231, 76, 60, 0.08);
+}
+
+.countdown-urgent .countdown-value {
+  color: #e74c3c;
+  animation: urgentPulse 1s ease infinite;
+}
+
+.countdown-compact {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f0c775;
+  letter-spacing: 0.5px;
+}
+
+.countdown-compact.urgent {
+  color: #e74c3c;
+  animation: urgentPulse 1s ease infinite;
+}
+
+.countdown-expired {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  font-style: italic;
+}
+
+@keyframes countTick {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes urgentPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

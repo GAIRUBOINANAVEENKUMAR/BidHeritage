@@ -1,0 +1,103 @@
+.notfound-page {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0f;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+/* Floating Elements */
+.notfound-bg-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floating-element {
+  position: absolute;
+  color: rgba(212, 168, 83, 0.08);
+  font-size: 2.5rem;
+  animation: floatElement 8s ease-in-out infinite;
+}
+
+.e1 { top: 15%; left: 10%; animation-delay: 0s; font-size: 3rem; }
+.e2 { top: 25%; right: 15%; animation-delay: -1.5s; font-size: 2rem; }
+.e3 { bottom: 20%; left: 20%; animation-delay: -3s; font-size: 2.5rem; }
+.e4 { bottom: 30%; right: 10%; animation-delay: -4.5s; font-size: 1.8rem; }
+.e5 { top: 50%; left: 50%; animation-delay: -6s; font-size: 3.5rem; }
+
+@keyframes floatElement {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+  25% { transform: translateY(-30px) rotate(10deg); opacity: 0.8; }
+  50% { transform: translateY(-15px) rotate(-5deg); opacity: 0.5; }
+  75% { transform: translateY(-40px) rotate(8deg); opacity: 0.7; }
+}
+
+/* Content */
+.notfound-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.notfound-code {
+  font-family: 'Playfair Display', serif;
+  font-size: 10rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, #d4a853, #f0c775, #d4a853);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease infinite;
+  filter: drop-shadow(0 0 40px rgba(212, 168, 83, 0.15));
+  margin-bottom: 0.5rem;
+}
+
+.notfound-divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #d4a853, transparent);
+  margin: 1rem auto 1.5rem;
+  border-radius: 2px;
+}
+
+.notfound-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f0f0f5;
+  margin-bottom: 1rem;
+}
+
+.notfound-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #888;
+  max-width: 420px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+.notfound-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@media (max-width: 600px) {
+  .notfound-code { font-size: 6rem; }
+  .notfound-title { font-size: 1.5rem; }
+  .notfound-actions { flex-direction: column; align-items: center; }
+}
