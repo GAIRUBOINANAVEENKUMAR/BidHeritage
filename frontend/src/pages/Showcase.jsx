@@ -57,11 +57,21 @@ const Showcase = () => {
     return cls.charAt(0).toUpperCase() + cls.slice(1);
   };
 
-  const getImageUrl = (img) => {
-    if (!img) return 'https://placehold.co/300x220/1a1a2e/d4a853?text=No+Image';
-    if (img.startsWith('http')) return img;
-    return `/uploads/${img}`;
-  };
+  // const getImageUrl = (img) => {
+  //   if (!img) return 'https://placehold.co/300x220/1a1a2e/d4a853?text=No+Image';
+  //   if (img.startsWith('http')) return img;
+  //   return `/uploads/${img}`;
+  // };
+const getImageUrl = (img) => {
+  if (!img) {
+    return 'https://placehold.co/300x220/1a1a2e/d4a853?text=No+Image';
+  }
+  if (img.startsWith('http')) {
+    return img;
+  }
+  const cleanPath = img.replace(/\\/g, '/');
+  return `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/${cleanPath}`;
+};
 
   const filtered = items.filter(i =>
     i.name?.toLowerCase().includes(searchQuery.toLowerCase())

@@ -4,9 +4,12 @@ import CountdownTimer from './CountdownTimer'
 import './ItemCard.css'
 
 export default function ItemCard({ item }) {
+  // const imageUrl = item.image
+  //   ? `${import.meta.env.VITE_API_URL || ''}/uploads/${item.image}`
+  //   : null
   const imageUrl = item.image
-    ? `${import.meta.env.VITE_API_URL || ''}/uploads/${item.image}`
-    : null
+  ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/${item.image.replace(/\\/g, '/')}`
+  : null
 
   const isActive = new Date(item.auctionDate) > new Date()
   const displayPrice = item.currentBid > 0 ? item.currentBid : item.basePrice
@@ -52,20 +55,18 @@ export default function ItemCard({ item }) {
             </div>
           )}
         </div>
-
         {isActive && (
           <div className="item-card-timer">
             <FiClock />
             <CountdownTimer targetDate={item.auctionDate} compact />
           </div>
         )}
-
         <div className="item-card-actions">
-          <Link to={`/item/${item._id}`} className="btn-view-details" id={`view-${item._id}`}>
+          <Link to={`/item/${item._id}`} className="auction-btn auction-btn-details" id={`view-${item._id}`}>
             View Details
           </Link>
           {isActive && (
-            <Link to={`/item/${item._id}`} className="btn-place-bid" id={`bid-${item._id}`}>
+            <Link to={`/item/${item._id}`} className="auction-btn auction-btn-bid" id={`bid-${item._id}`}>
               Place Bid
             </Link>
           )}

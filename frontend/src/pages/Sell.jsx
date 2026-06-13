@@ -112,9 +112,9 @@ export default function Sell() {
       const body = new FormData();
       body.append('name', formData.name);
       body.append('category', formData.category);
-      body.append('description', formData.description);
+      body.append('history', formData.description);
       body.append('basePrice', formData.basePrice);
-      body.append('auctionEndDate', formData.auctionEndDate);
+      body.append('auctionDate', formData.auctionEndDate);
       if (image) body.append('image', image);
 
       await axios.post('/api/items', body, {

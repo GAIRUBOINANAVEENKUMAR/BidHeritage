@@ -41,6 +41,15 @@ export default function Navbar() {
         { to: '/contact', label: 'Contact' },
       ]
 
+  const getPhotoUrl = (photo) => {
+  if (!photo) return null;
+  if (photo.startsWith('http')) return photo;
+  const cleanPhoto = photo
+    .replace(/\\/g, '/')
+    .replace(/^uploads\//, '');
+  return `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/uploads/${cleanPhoto}`;
+};
+
   return (
     <nav className="navbar" id="main-navbar">
       <div className="navbar-container">
@@ -71,11 +80,19 @@ export default function Navbar() {
                 id="profile-toggle-btn"
               >
                 {user?.photo ? (
+                  // <img
+                  //   src={`${import.meta.env.VITE_API_URL || ''}/uploads/${user.photo}`}
+                  //   alt={user.username}
+                  //   className="profile-avatar"
+                  // />
                   <img
-                    src={`${import.meta.env.VITE_API_URL || ''}/uploads/${user.photo}`}
-                    alt={user.username}
-                    className="profile-avatar"
-                  />
+                  src={getPhotoUrl(user?.photo)}
+                  alt={user?.username}
+                  className="profile-avatar"
+                  onError={(e) => {
+                 console.log("Image failed:", e.target.src);
+                    }}
+                 />
                 ) : (
                   <div className="profile-avatar-placeholder">
                     {user?.username?.charAt(0)?.toUpperCase() || 'U'}

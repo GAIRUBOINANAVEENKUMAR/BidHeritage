@@ -113,15 +113,29 @@ const Profile = () => {
     }
   };
 
-  const getPhotoUrl = () => {
-    if (photoPreview) return photoPreview;
-    if (profile?.photo) {
-      if (profile.photo.startsWith('http')) return profile.photo;
-      return `/uploads/${profile.photo}`;
-    }
-    return `https://ui-avatars.com/api/?name=${profile?.username || 'U'}&background=d4a853&color=0a0a0f&size=200&bold=true`;
-  };
+  // const getPhotoUrl = () => {
+  //   if (photoPreview) return photoPreview;
+  //   if (profile?.photo) {
+  //     if (profile.photo.startsWith('http')) return profile.photo;
+  //     return `/uploads/${profile.photo}`;
+  //   }
+  //   return `https://ui-avatars.com/api/?name=${profile?.username || 'U'}&background=d4a853&color=0a0a0f&size=200&bold=true`;
+  // };
+const getPhotoUrl = () => {
+  if (photoPreview) return photoPreview;
 
+  if (profile?.photo) {
+    if (profile.photo.startsWith('http')) {
+      return profile.photo;
+    }
+
+    const cleanPath = profile.photo.replace(/\\/g, '/');
+
+    return `http://localhost:5000/${cleanPath}`;
+  }
+
+  return `https://ui-avatars.com/api/?name=${profile?.username || 'U'}&background=d4a853&color=0a0a0f&size=200&bold=true`;
+};
   if (loading) {
     return (
       <div className="prof-loading">

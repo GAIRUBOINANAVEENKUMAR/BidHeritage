@@ -125,11 +125,20 @@ const ItemDetails = () => {
   const highestBid = bids.length > 0 ? Math.max(...bids.map(b => b.amount)) : item?.basePrice || 0;
   const minBid = highestBid + 1;
 
-  const getImageUrl = (img) => {
-    if (!img) return 'https://placehold.co/600x500/1a1a2e/d4a853?text=No+Image';
-    if (img.startsWith('http')) return img;
-    return `/uploads/${img}`;
-  };
+  // const getImageUrl = (img) => {
+  //   if (!img) return 'https://placehold.co/600x500/1a1a2e/d4a853?text=No+Image';
+  //   if (img.startsWith('http')) return img;
+  //   return `/uploads/${img}`;
+  // };
+const getImageUrl = (img) => {
+  if (!img) {
+    return 'https://placehold.co/600x500/1a1a2e/d4a853?text=No+Image';
+  }
+
+  const cleanPath = img.replace(/\\/g, '/');
+
+  return `http://localhost:5000/${cleanPath}`;
+};
 
   if (loading) {
     return (
@@ -152,11 +161,11 @@ const ItemDetails = () => {
   return (
     <div className="item-details-page">
       {/* breadcrumb */}
-      <nav className="id-breadcrumb">
+      {/* <nav className="id-breadcrumb">
         <Link to="/">Home</Link> <span>/</span>
         <Link to="/auctions">Auctions</Link> <span>/</span>
         <span className="id-current">{item.name}</span>
-      </nav>
+      </nav> */}
 
       <div className="id-main-grid">
         {/* LEFT — Image */}

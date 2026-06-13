@@ -264,6 +264,16 @@ export default function Register() {
               accept="image/*"
               onChange={handlePhoto}
             />
+            {/* <input
+  type="file"
+  id="photo-input"
+  accept="image/*"
+  style={{ display: 'block' }}
+  onChange={(e) => {
+    console.log("File selected");
+    handlePhoto(e);
+  }}
+/> */}
             <div className="photo-preview">
               {photoPreview ? (
                 <img src={photoPreview} alt="Preview" />

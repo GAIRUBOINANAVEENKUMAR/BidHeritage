@@ -118,9 +118,13 @@ function AuctionCard({ item, onBid }) {
           <button className="auction-btn auction-btn-bid" onClick={() => onBid(item)}>
             <FiZap /> Place Bid
           </button>
+           {/* <Link to={`/item/${item._id}`} className="btn-view-details" id={`view-${item._id}`}>
+            View Details
+          </Link> */}
           <Link
-            to={`/item/${item._id || item.id}`}
+            to={`/item/${item._id}`}
             className="auction-btn auction-btn-details"
+            id={`view-${item._id}`}
           >
             <FiEye /> Details
           </Link>
@@ -234,11 +238,20 @@ export default function LiveAuction() {
 
     setBidLoading(true);
     try {
-      await axios.post(
-        `/api/items/${bidItem._id || bidItem.id}/bid`,
-        { amount: Number(bidAmount) },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      // await axios.post(
+      //   `/api/items/${bidItem._id || bidItem.id}/bid`,
+      //   { amount: Number(bidAmount) },
+      //   { headers: { Authorization: `Bearer ${token}` } }
+      // );
+      await axios.post('/api/bids',
+        {
+          itemId: bidItem._id || bidItem.id,
+          amount: Number(bidAmount)
+        },{
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
       // Update local state
       setItems((prev) =>
         prev.map((item) =>

@@ -40,14 +40,14 @@ const Dashboard = () => {
 
   const quickActions = [
     { label: 'List New Item', icon: <FiPlus />, to: '/sell' },
-    { label: 'Browse Auctions', icon: <FiSearch />, to: '/auctions' },
+    { label: 'Browse Auctions', icon: <FiSearch />, to: '/home' },
     { label: 'My Profile', icon: <FiUser />, to: '/profile' },
   ];
 
   const getImageUrl = (img) => {
     if (!img) return 'https://placehold.co/80x80/1a1a2e/d4a853?text=Item';
     if (img.startsWith('http')) return img;
-    return `/uploads/${img}`;
+    return `/${img}`;
   };
 
   if (loading) {

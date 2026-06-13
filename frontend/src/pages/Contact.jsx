@@ -57,21 +57,21 @@ export default function Contact() {
               <div className="info-card-icon"><FiMail /></div>
               <div>
                 <h4>Email</h4>
-                <p>support@bidheritage.com</p>
+                <p>gairunaveen@gmail.com</p>
               </div>
             </div>
             <div className="info-card">
               <div className="info-card-icon"><FiPhone /></div>
               <div>
                 <h4>Phone</h4>
-                <p>+91 98765 43210</p>
+                <p>+91 90591 xxxxx</p>
               </div>
             </div>
             <div className="info-card">
               <div className="info-card-icon"><FiMapPin /></div>
               <div>
                 <h4>Address</h4>
-                <p>Hyderabad, Telangana, India</p>
+                <p>Guntur, Andhra Pradesh, India</p>
               </div>
             </div>
           </div>
