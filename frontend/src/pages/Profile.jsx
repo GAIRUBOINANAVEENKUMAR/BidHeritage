@@ -131,7 +131,8 @@ const getPhotoUrl = () => {
 
     const cleanPath = profile.photo.replace(/\\/g, '/');
 
-    return `http://localhost:5000/${cleanPath}`;
+    // return `http://localhost:5000/${cleanPath}`;
+    return `${import.meta.env.VITE_API_URL}/${cleanPath}`;
   }
 
   return `https://ui-avatars.com/api/?name=${profile?.username || 'U'}&background=d4a853&color=0a0a0f&size=200&bold=true`;

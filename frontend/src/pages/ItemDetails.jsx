@@ -125,11 +125,7 @@ const ItemDetails = () => {
   const highestBid = bids.length > 0 ? Math.max(...bids.map(b => b.amount)) : item?.basePrice || 0;
   const minBid = highestBid + 1;
 
-  // const getImageUrl = (img) => {
-  //   if (!img) return 'https://placehold.co/600x500/1a1a2e/d4a853?text=No+Image';
-  //   if (img.startsWith('http')) return img;
-  //   return `/uploads/${img}`;
-  // };
+
 const getImageUrl = (img) => {
   if (!img) {
     return 'https://placehold.co/600x500/1a1a2e/d4a853?text=No+Image';
@@ -137,7 +133,8 @@ const getImageUrl = (img) => {
 
   const cleanPath = img.replace(/\\/g, '/');
 
-  return `http://localhost:5000/${cleanPath}`;
+  // return `http://localhost:5000/${cleanPath}`;
+   return `${import.meta.env.VITE_API_URL}/${cleanPath}`;
 };
 
   if (loading) {
