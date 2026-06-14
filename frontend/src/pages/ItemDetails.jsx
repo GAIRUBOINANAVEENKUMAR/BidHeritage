@@ -133,8 +133,8 @@ const getImageUrl = (img) => {
 
   const cleanPath = img.replace(/\\/g, '/');
 
-  // return `http://localhost:5000/${cleanPath}`;
-   return `${import.meta.env.VITE_API_URL}/${cleanPath}`;
+  return `http://localhost:5000/${cleanPath}`;
+  //  return `${import.meta.env.VITE_API_URL}/${cleanPath}`;
 };
 
   if (loading) {
