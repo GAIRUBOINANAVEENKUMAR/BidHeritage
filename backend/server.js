@@ -23,19 +23,36 @@ const app = express();
 const server = http.createServer(app);
 
 // Set up Socket.IO with CORS
+// const io = new Server(server, {
+//   cors: {
+//     origin: 'http://localhost:5173',
+//     methods: ['GET', 'POST'],
+//     credentials: true
+//   }
+// });
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: [
+      'http://localhost:5173',
+      'https://bidheritage-frontend.onrender.com'
+    ],
     methods: ['GET', 'POST'],
     credentials: true
   }
 });
-
 // Middleware
+// app.use(cors({
+//   origin: 'http://localhost:5173',
+//   credentials: true
+// }));
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',
+    'https://bidheritage-frontend.onrender.com'
+  ],
   credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
