@@ -14,17 +14,20 @@ import './Welcome.css';
 
 const slides = [
   {
-    bgClass: 'slide-bg-1',
+    image: '1736272541504-horse.jpg',
+    // bgClass: 'slide-bg-1',
     title: 'Rare Antique Pottery',
     description: 'Centuries-old craftsmanship, preserved for the modern collector.',
   },
   {
-    bgClass: 'slide-bg-2',
+    image: 'old_art.jpg',
+    // bgClass: 'slide-bg-2',
     title: 'Classic Fine Art',
     description: 'Masterpieces from forgotten eras, waiting to adorn your walls.',
   },
   {
-    bgClass: 'slide-bg-3',
+    image: 'image.png',
+    // bgClass: 'slide-bg-3',
     title: 'Precious Vintage Jewels',
     description: 'Timeless elegance captured in every gemstone and setting.',
   },
@@ -157,12 +160,23 @@ export default function Welcome() {
 
           <div className="slideshow-viewport">
             {slides.map((slide, index) => (
+              // <div
+              //   key={index}
+              //   className={`slideshow-slide ${slide.bgClass} ${
+              //     index === currentSlide ? 'active' : ''
+              //   }`}
+              // >
               <div
-                key={index}
-                className={`slideshow-slide ${slide.bgClass} ${
-                  index === currentSlide ? 'active' : ''
-                }`}
-              >
+  key={index}
+  className={`slideshow-slide ${
+    index === currentSlide ? 'active' : ''
+  }`}
+  style={{
+    backgroundImage: `url(${slide.image})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}
+>
                 <div className="slide-content">
                   <h3>{slide.title}</h3>
                   <p>{slide.description}</p>

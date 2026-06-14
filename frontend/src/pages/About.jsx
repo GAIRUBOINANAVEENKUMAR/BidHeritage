@@ -97,10 +97,10 @@ const About = () => {
         <h2 className="about-section-title">The Mind Behind BidHeritage</h2>
         <div className="about-dev-card">
           <div className="about-dev-avatar">
-            <img src="https://ui-avatars.com/api/?name=G+Naveen+Kumar&background=d4a853&color=0a0a0f&size=150&bold=true&font-size=0.35" alt="G. Naveen Kumar" />
+            <img src="public\passportsize_photo.jpg" alt="G. Naveen Kumar" />
           </div>
           <div className="about-dev-info">
-            <h3>G. Naveen Kumar</h3>
+            <h3>G.Naveen Kumar</h3>
             <span className="about-dev-role">Founder & Developer</span>
             <p>Passionate full-stack developer with a love for vintage aesthetics and modern technology. Built BidHeritage to create a premium auction experience that honors the legacy of every collectible.</p>
             <div className="about-dev-socials">
