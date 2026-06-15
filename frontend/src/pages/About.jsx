@@ -97,7 +97,7 @@ const About = () => {
         <h2 className="about-section-title">The Mind Behind BidHeritage</h2>
         <div className="about-dev-card">
           <div className="about-dev-avatar">
-            <img src="public\passportsize_photo.jpg" alt="G. Naveen Kumar" />
+            <img src="passportsize_photo.jpg" alt="G. Naveen Kumar" />
           </div>
           <div className="about-dev-info">
             <h3>G.Naveen Kumar</h3>
