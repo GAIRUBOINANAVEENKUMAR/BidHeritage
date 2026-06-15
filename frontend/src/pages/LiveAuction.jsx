@@ -73,11 +73,15 @@ function AuctionCard({ item, onBid }) {
     item.currentBid || item.highestBid || item.basePrice || 0;
   const bidCount = item.bidCount ?? item.bids?.length ?? 0;
   const endDate = item.auctionEndDate || item.auctionDate || item.endDate;
-  const imageUrl = item.image?.startsWith('http')
-    ? item.image
-    : item.image
-    ? `/${item.image}`
-    : '';
+  // const imageUrl = item.image?.startsWith('http')
+  //   ? item.image
+  //   : item.image
+  //   ? `/${item.image}`
+  //   : '';
+  const imageUrl = item.image
+  ? `${import.meta.env.VITE_API_URL}/${item.image.replace(/\\/g, '/')}`
+  : '';
+  console.log("Live Auction Image:", imageUrl);
 
   return (
     <div className="auction-card">
